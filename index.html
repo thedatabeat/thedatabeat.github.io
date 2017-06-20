@@ -19,25 +19,27 @@
 
     <section class="main-content">
       <h1> Summary </h1>
-     I studied flight ontime performance data which is accessable at the
+     I studied flight ontime performance data which is accessible at the
      <a href='https://transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&DB_Short_Name=On-Time&DB_Name=Airline%20On-Time%20Performance%20Data&Link=0&DB_URL=Mode_ID=1&Mode_Desc=Aviation&Subject_ID2=0'>Bureau of Transportation Statistics</a>.
      Based on all 5.5 million domestic flights from 2016 I generated a  flight delay
      prediction model for flights within the USA. The size of the analyzed dataset is 600 MB.
      <p>
        An application runs on heroku with a web interface <a href='http://flightontimeprediction.herokuapp.com/'>ONTIMEPREDICTOR</a>
        and the code can be found on github <a href='https://github.com/thedatabeat/Flighdelay'>thedatabeat</a>.
+       The code for preprocessing, analysis and evaluation of the data is located at
+         <a href='https://github.com/thedatabeat/Flight-delay-analysis'> this repository </a>.
        <p>
        The dataset has 83% ontime flights, therefore if one predicts every flight ontime the
        percentage of correctly  predicted ontime flights is 83%.
       <br>
-       In the model provided, the percentage of correctly prediced ontime flights is 89%.
+       In the model provided, the percentage of correctly predicted ontime flights is 89%.
        The area under curve (AUC) score  is 0.67.
        <p>
          After testing various machine learning algorithms such as logistic regression,
          support vector machines, random forest, neural networks, AdaBoost and gradient boosting,
          I choose logistic regression to generate the model.  The other more sophisticated models did not generate better results due to
          insufficient structure in the data therefore I applied Occam's razor.
-        <p> All the analysis is made on python using various libaries such as <a href='http://pandas.pydata.org/'>pandas</a> and
+        <p> All the analysis is made on python using various libraries such as <a href='http://pandas.pydata.org/'>pandas</a> and
 <a href='http://scikit-learn.org/'>sklearn</a>.
 
       <h1> Prior Analysis </h1>
@@ -59,9 +61,9 @@
          into one hour blocks.
 
         <h1> Logistic Regression </h1>
-        I trained a logistic regression model on 60% of the data and cross validated it on the remaing 40%.
-        The parameters were choosen in a way that best results were obtained.
-        Note that the label positive means delayed and the label negativ means ontime.
+        I trained a logistic regression model on 60% of the data and cross validated it on the remaining 40%.
+        The parameters were chosen in a way that best results were obtained.
+        Note that the label positive means delayed and the label negative means ontime.
         <p> The first plot is the receiver operating curve, the area under this curve is the  AUC-score which is 0.67. One can see that the curve is the same on the training and the test set which indicates
           that the model is not overfitted.
           <Br>
@@ -73,15 +75,15 @@
 <Br>
           <img src='Plots/sensspec.png'>
         <p> The negative prediction value = (predicded ontime and ontime)/(predicted ontime)
-          <Br> is the quantiy I mentioned in the summay. If this value is around 0.9 we classify a bit less than half of the flights ontime.
+          <Br> is the quantiy I mentioned in the summary. If this value is around 0.9 we classify a bit less than half of the flights ontime.
             <Br>
         <img src='Plots/NPV.png'>
-        <p> The positive prediction value = (predicded delayed and delayed)/(predicted delayed)
-          <Br>  is low. It says how reliable is a delayed prediction. If one predicts all flights delayed then this prediction is right with probabilty
+        <p> The positive prediction value = (predicted delayed and delayed)/(predicted delayed)
+          <Br>  is low. It says how reliable is a delayed prediction. If one predicts all flights delayed then this prediction is right with probability
             0.16. With the model I can reach a probability of 0.3 when I predict about 25 % of the flights delayed.
             <Br>
         <img src='Plots/PPV.png'>
-      <p>  And finally the accuray which is not really better than the null hypothesis.
+      <p>  And finally the accuracy which is not really better than the null hypothesis.
         <img src='Plots/accuracy.png'>
 
 
