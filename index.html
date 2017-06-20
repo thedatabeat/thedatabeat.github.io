@@ -48,11 +48,12 @@
       First I studied the significance of each feature. I did this in the mindset of a 2-sided t-test.
       This went as follows: Fix a feature.
       Compute for several splits of the dataset (approximately 500 splits) the
-       ratio of delayed flights for each value of these feature and take the maximal distance of the ratios for each split,
-       this is the test quantity <i> Q </i> which
-       just depends on the split. Then divide the mean of the <i> Q </i>'s by the standard deviation of the <i> Q </i>'s and multiply by the
-       square root of the number of splits.
-       The resulting number is big if the feature is significant and small otherwise.
+       ratio of delayed flights for each value of this feature. Let's name this quantity <i> Q </i>,
+       which depends  on splits and the feature values.
+      Then compute for each feature value the mean and standard deviation of <i> Q </i>. For each pair of feature values compute then
+       the ratio of difference between the mean values and an average standard deviation  and multiply it by the square root of the number of
+      splits. This measures the significance between pairs of feature values, from this numbers maximize over the pairs of feature values.
+       This   is big if the feature is significant and small otherwise.
        <p>
          From this analysis came out that some features are more significant than others. But the
          machine learning algorithms performed best when all features were fed.
